@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('tweets.index');
 });
 
 Route::get("/login", [\App\Http\Controllers\AuthController::class, "login"]);
