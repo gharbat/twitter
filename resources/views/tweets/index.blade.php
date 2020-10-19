@@ -6,7 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/app.css">
-    <title>Document</title>
+    <link rel="shortcut icon" href="//abs.twimg.com/favicons/twitter.ico" type="image/x-icon">
+    <title>Home page</title>
 </head>
 <body>
 <div class="container">
@@ -129,11 +130,19 @@
             </div>
             <div class="col-lg-5">
                 <div class="body">
+                    <div class="add-tweet">
+                        <form action="" method="post">
+                            @csrf
+                            <textarea  class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                            <button type="submit" class="btn">add tweet</button>
+                        </form>
+                    </div>
                     <div class="tweet-card">
                         <div class="poster-image">
                             <img src="https://via.placeholder.com/150" alt="">
                         </div>
                         <div class="tweet-body">
+
                                 <div class="name-more">
                                     <div class="name">
                                         Ali alwahsh
