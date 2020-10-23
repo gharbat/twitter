@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('tweets.index');
 });
 
-Route::get("/login", [\App\Http\Controllers\AuthController::class, "login"]);
-Route::post("/login", [\App\Http\Controllers\AuthController::class, "loginAction"]);
+Route::post("/insert/tweet", [\App\Http\Controllers\TweetController::class, "insert"]);
 
 
-Route::get("/signup", [\App\Http\Controllers\AuthController::class, "signup"]);
-Route::post("/signup", [\App\Http\Controllers\AuthController::class, "signupAction"]);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

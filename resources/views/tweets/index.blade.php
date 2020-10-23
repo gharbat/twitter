@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/compiled/app.css">
     <link rel="shortcut icon" href="//abs.twimg.com/favicons/twitter.ico" type="image/x-icon">
     <title>Home page</title>
 </head>
@@ -131,9 +132,9 @@
             <div class="col-lg-5">
                 <div class="body">
                     <div class="add-tweet">
-                        <form action="" method="post">
+                        <form action="/insert/tweet" method="post">
                             @csrf
-                            <textarea  class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                            <textarea  class="form-control" name="tweet_body" id="" cols="30" rows="10"></textarea>
                             <button type="submit" class="btn">add tweet</button>
                         </form>
                     </div>
