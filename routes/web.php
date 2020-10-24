@@ -13,11 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('tweets.index');
-});
+Route::get('/profile/{id}', [\App\Http\Controllers\TweetController::class, "index"]);
 
 Route::post("/insert/tweet", [\App\Http\Controllers\TweetController::class, "insert"]);
+
+
+
+
+
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

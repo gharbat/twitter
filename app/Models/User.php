@@ -60,12 +60,16 @@ class User extends Authenticatable
     ];
 
     public function tweets(){
-        return $this->hasMany("App\Tweet");
+        return $this->hasMany(Tweet::class);
     }
     public function likes(){
         return $this->hasMany("App\Like");
     }
     public function comments(){
         return $this->hasMany("App\Comment");
+    }
+
+    public function followers(){
+        return $this->hasMany(Follow::class);
     }
 }

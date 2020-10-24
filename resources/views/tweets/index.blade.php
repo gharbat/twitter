@@ -34,9 +34,15 @@
                     <input class="form-control mr-sm-2 twitter-search" type="search"  aria-label="Search">
                 </form>
                 <div class="nav-item dropdown">
+                    @if(! Auth::user())
                     <a class="nav-link dropdown-toggle twitter-dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Have an account ? <span>Login</span>
                     </a>
+                    @else
+                        <a class="nav-link dropdown-toggle twitter-dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hello  <span>{{Auth::user()->name}}</span>
+                        </a>
+                    @endif
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
@@ -64,14 +70,14 @@
                 <div class="numbers">
                     <div class="btn custom-btn active-number">
                         <div class="placeholder">Tweets</div>
-                        <div class="number">13.4K</div>
+                        <div class="number">{{Auth::user()->tweets->count()}}</div>
                     </div>
                     <div class="btn custom-btn">
-                        <div class="placeholder">Tweets</div>
-                        <div class="number">13.4K</div>
+                        <div class="placeholder">Followers</div>
+                        <div class="number">{{Auth::user()->followers->count()}}</div>
                     </div>
                     <div class="btn custom-btn">
-                        <div class="placeholder">Tweets</div>
+                        <div class="placeholder">Following</div>
                         <div class="number">13.4K</div>
                     </div>
                 </div>
@@ -89,11 +95,11 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="name-and-handle">
-                    <h3 class="name">Unblast</h3>
-                    <span class="handle">@urcool</span>
+                    <h3 class="name">{{Auth::user()->name}}</h3>
+                    <span class="handle">@ {{Auth::user()->name}}</span>
                 </div>
                 <p class="bio">
-                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
+                    <span>{{Auth::user()->bio}}</span>
                 </p>
                 <div class="icons">
                     <div class="icon-element">
@@ -118,14 +124,9 @@
                 </div>
                 <div class="boxes">
                     <div class="group">
-                        <div class="box"></div>
-                        <div class="box"></div>
-                        <div class="box"></div>
-                    </div>
-                    <div class="group mt-3">
-                        <div class="box"></div>
-                        <div class="box"></div>
-                        <div class="box"></div>
+                        @foreach($media as $image)
+                            <img src="{{$image->image}}" class="box">
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -138,6 +139,8 @@
                             <button type="submit" class="btn">add tweet</button>
                         </form>
                     </div>
+
+                    @foreach($tweets as $tweet)
                     <div class="tweet-card">
                         <div class="poster-image">
                             <img src="https://via.placeholder.com/150" alt="">
@@ -146,24 +149,28 @@
 
                                 <div class="name-more">
                                     <div class="name">
-                                        Ali alwahsh
+                                        {{$tweet->user->name}}
                                     </div>
                                     <div class="more">
                                         >
                                     </div>
                                 </div>
                                 <div class="tweet-text">
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum harum laborum
-                                        libero magni modi quo voluptas? Adipisci, asperiores culpa ducimus, esse
-                                        inventore perferendis, quibusdam quisquam repellat sequi sunt tempore vero!
+                                    <div>
+                                        {{$tweet->body}}
                                     </div>
                                 </div>
 
+                                @if($tweet->image)
                                 <div class="tweet-media">
 
                                 </div>
+                                @endif
                         </div>
                     </div>
+                    @endforeach
+
+
                 </div>
             </div>
             <div class="col-lg-4"></div>
