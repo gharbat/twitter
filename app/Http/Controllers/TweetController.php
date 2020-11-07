@@ -14,7 +14,7 @@ class TweetController extends Controller
         $tweets = $prepared->get(); //
         $media = $prepared->whereNotNull("image")->limit(6); // image
 
-        return view("tweets.index", compact('tweets', 'media'));
+        return view("tweets.profile", compact('tweets', 'media'));
     }
 
 

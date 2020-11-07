@@ -17,7 +17,7 @@ Route::get('/profile/{id}', [\App\Http\Controllers\TweetController::class, "inde
 
 Route::post("/insert/tweet", [\App\Http\Controllers\TweetController::class, "insert"]);
 
-
+Route::get("/", [\App\Http\Controllers\HomeController::class, "home"]);
 
 
 

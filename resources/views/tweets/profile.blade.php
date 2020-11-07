@@ -55,47 +55,87 @@
         </nav>
     </section>
 </div>
+<section class="cover-photo">
 
+</section>
+<section class="stats">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="profile-img">
+
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="numbers">
+                    <div class="btn custom-btn active-number">
+                        <div class="placeholder">Tweets</div>
+                        <div class="number">{{Auth::user()->tweets->count()}}</div>
+                    </div>
+                    <div class="btn custom-btn">
+                        <div class="placeholder">Followers</div>
+                        <div class="number">{{Auth::user()->followers->count()}}</div>
+                    </div>
+                    <div class="btn custom-btn">
+                        <div class="placeholder">Following</div>
+                        <div class="number">13.4K</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-right">
+                <div class="follow">
+                    <button class="btn btn-outline-secondary"> Follow </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="content">
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                <ul class="left-menu">
-                    <li>
-                        <div class="list-icon">
-                            <svg viewBox="0 0 24 24" class="r-jwli3a r-4qtqp9 r-yyyyoo r-lwhw9o r-dnmrzs r-bnwqim r-1plcrui r-lrvibr"><g><path d="M22.46 7.57L12.357 2.115c-.223-.12-.49-.12-.713 0L1.543 7.57c-.364.197-.5.652-.303 1.017.135.25.394.393.66.393.12 0 .243-.03.356-.09l.815-.44L4.7 19.963c.214 1.215 1.308 2.062 2.658 2.062h9.282c1.352 0 2.445-.848 2.663-2.087l1.626-11.49.818.442c.364.193.82.06 1.017-.304.196-.363.06-.818-.304-1.016zm-4.638 12.133c-.107.606-.703.822-1.18.822H7.36c-.48 0-1.075-.216-1.178-.798L4.48 7.69 12 3.628l7.522 4.06-1.7 12.015z"></path><path d="M8.22 12.184c0 2.084 1.695 3.78 3.78 3.78s3.78-1.696 3.78-3.78-1.695-3.78-3.78-3.78-3.78 1.696-3.78 3.78zm6.06 0c0 1.258-1.022 2.28-2.28 2.28s-2.28-1.022-2.28-2.28 1.022-2.28 2.28-2.28 2.28 1.022 2.28 2.28z"></path></g></svg>                        </div>
-                        <div class="list-text">
-                            Home
+                <div class="name-and-handle">
+                    <h3 class="name">{{Auth::user()->name}}</h3>
+                    <span class="handle">@ {{Auth::user()->name}}</span>
+                </div>
+                <p class="bio">
+                    <span>{{Auth::user()->bio}}</span>
+                </p>
+                <div class="icons">
+                    <div class="icon-element">
+                        <div class="icon">
+                            <i class="fab fa-instagram"></i>
                         </div>
-                    </li>
-                    <li>
-                        <div class="list-icon">
-                            <svg viewBox="0 0 24 24" class="r-jwli3a r-4qtqp9 r-yyyyoo r-lwhw9o r-dnmrzs r-bnwqim r-1plcrui r-lrvibr"><g><path d="M21.697 16.468c-.02-.016-2.14-1.64-2.103-6.03.02-2.532-.812-4.782-2.347-6.335C15.872 2.71 14.01 1.94 12.005 1.93h-.013c-2.004.01-3.866.78-5.242 2.174-1.534 1.553-2.368 3.802-2.346 6.334.037 4.33-2.02 5.967-2.102 6.03-.26.193-.366.53-.265.838.102.308.39.515.712.515h4.92c.102 2.31 1.997 4.16 4.33 4.16s4.226-1.85 4.327-4.16h4.922c.322 0 .61-.206.71-.514.103-.307-.003-.645-.263-.838zM12 20.478c-1.505 0-2.73-1.177-2.828-2.658h5.656c-.1 1.48-1.323 2.66-2.828 2.66zM4.38 16.32c.74-1.132 1.548-3.028 1.524-5.896-.018-2.16.644-3.982 1.913-5.267C8.91 4.05 10.397 3.437 12 3.43c1.603.008 3.087.62 4.18 1.728 1.27 1.285 1.933 3.106 1.915 5.267-.024 2.868.785 4.765 1.525 5.896H4.38z"></path></g></svg>                        </div>
-                        <div class="list-text">
-                            Notifications
+                        <div class="text">hola mola</div>
+                    </div>
+                    <div class="icon-element">
+                        <div class="icon">
+                            <i class="fab fa-instagram"></i>
                         </div>
-                    </li>
-                    <li>
-                        <div class="list-icon">
-                            <svg viewBox="0 0 24 24" class="r-jwli3a r-4qtqp9 r-yyyyoo r-lwhw9o r-dnmrzs r-bnwqim r-1plcrui r-lrvibr"><g><path d="M12 11.816c1.355 0 2.872-.15 3.84-1.256.814-.93 1.078-2.368.806-4.392-.38-2.825-2.117-4.512-4.646-4.512S7.734 3.343 7.354 6.17c-.272 2.022-.008 3.46.806 4.39.968 1.107 2.485 1.256 3.84 1.256zM8.84 6.368c.162-1.2.787-3.212 3.16-3.212s2.998 2.013 3.16 3.212c.207 1.55.057 2.627-.45 3.205-.455.52-1.266.743-2.71.743s-2.255-.223-2.71-.743c-.507-.578-.657-1.656-.45-3.205zm11.44 12.868c-.877-3.526-4.282-5.99-8.28-5.99s-7.403 2.464-8.28 5.99c-.172.692-.028 1.4.395 1.94.408.52 1.04.82 1.733.82h12.304c.693 0 1.325-.3 1.733-.82.424-.54.567-1.247.394-1.94zm-1.576 1.016c-.126.16-.316.246-.552.246H5.848c-.235 0-.426-.085-.552-.246-.137-.174-.18-.412-.12-.654.71-2.855 3.517-4.85 6.824-4.85s6.114 1.994 6.824 4.85c.06.242.017.48-.12.654z"></path></g></svg>
+                        <div class="text">hola mola</div>
+                    </div>
+                    <div class="icon-element">
+                        <div class="icon">
+                            <i class="fab fa-instagram"></i>
                         </div>
-                        <div class="list-text">
-                            Profile
-                        </div>
-                    </li>
-                </ul>
+                        <div class="text">hola mola</div>
+                    </div>
+
+                </div>
+                <div class="boxes">
+                    <div class="group">
+                        @foreach($media as $image)
+                            <img src="{{$image->image}}" class="box">
+                        @endforeach
+                    </div>
+                </div>
             </div>
             <div class="col-lg-5">
                 <div class="body">
                     <div class="add-tweet">
                         <form action="/insert/tweet" method="post">
                             @csrf
-                            <textarea  class="form-control add-tweet" name="tweet_body" id="" cols="30" rows="10" placeholder="What is happening ?"></textarea>
-                            <div class="more-options">
-                                <div class="option">
-                                    <svg viewBox="0 0 24 24" class="r-13gxpu9 r-4qtqp9 r-yyyyoo r-1q142lx r-50lct3 r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1srniue"><g><path d="M19.75 2H4.25C3.01 2 2 3.01 2 4.25v15.5C2 20.99 3.01 22 4.25 22h15.5c1.24 0 2.25-1.01 2.25-2.25V4.25C22 3.01 20.99 2 19.75 2zM4.25 3.5h15.5c.413 0 .75.337.75.75v9.676l-3.858-3.858c-.14-.14-.33-.22-.53-.22h-.003c-.2 0-.393.08-.532.224l-4.317 4.384-1.813-1.806c-.14-.14-.33-.22-.53-.22-.193-.03-.395.08-.535.227L3.5 17.642V4.25c0-.413.337-.75.75-.75zm-.744 16.28l5.418-5.534 6.282 6.254H4.25c-.402 0-.727-.322-.744-.72zm16.244.72h-2.42l-5.007-4.987 3.792-3.85 4.385 4.384v3.703c0 .413-.337.75-.75.75z"></path><circle cx="8.868" cy="8.309" r="1.542"></circle></g></svg>
-                                </div>
-                            </div>
+                            <textarea  class="form-control" name="tweet_body" id="" cols="30" rows="10"></textarea>
                             <button type="submit" class="btn">add tweet</button>
                         </form>
                     </div>

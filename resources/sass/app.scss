@@ -114,8 +114,20 @@
       }
     }
   }
-
   .body{
+    .add-tweet{
+      height: 7rem;
+      border-radius: 5px 5px 0 0 ;
+      resize: none;
+    }
+    .more-options{
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 0.5rem;
+      .option{
+        width: 1.5rem;
+      }
+    }
     .tweet-card{
       background: white;
       padding: 1rem;
@@ -143,6 +155,20 @@
           height: 15rem;
           border-radius: 1rem;
         }
+      }
+    }
+  }
+  .left-menu{
+    li{
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 0.75rem;
+      .list-icon{
+        width: 1.5rem;
+      }
+      .list-text{
+        font-weight: bold;
+        margin-left: 1rem;
       }
     }
   }
