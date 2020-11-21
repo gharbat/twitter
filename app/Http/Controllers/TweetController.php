@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tweet;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 class TweetController extends Controller
 {
     public function index($id){
 
-        $prepared = Tweet::where("user_id", $id); // all of user tweets
+        $user = User::findOrFail($id);
 
-        $tweets = $prepared->get(); //
-        $media = $prepared->whereNotNull("image")->limit(6); // image
+        $tweets = $user->tweets; // all of user tweets
 
-        return view("tweets.profile", compact('tweets', 'media'));
+        return view("tweets.profile", compact('tweets', 'user'));
     }
 
 

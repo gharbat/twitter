@@ -74,7 +74,7 @@
                     </div>
                     <div class="btn custom-btn">
                         <div class="placeholder">Followers</div>
-                        <div class="number">{{Auth::user()->followers->count()}}</div>
+{{--                        <div class="number">{{Auth::user()->followers->count()}}</div>--}}
                     </div>
                     <div class="btn custom-btn">
                         <div class="placeholder">Following</div>
@@ -84,7 +84,12 @@
             </div>
             <div class="col-lg-4 text-right">
                 <div class="follow">
-                    <button class="btn btn-outline-secondary"> Follow </button>
+                    @if(! Auth::user()->following->where("following_id", request()->id )->count())
+                    <a href="/follow/{{request()->id}}" class="btn btn-outline-secondary"> Follow </a>
+                    @else
+                        <a href="/unfollow/{{request()->id}}" class="btn btn-outline-secondary"> Un Follow </a>
+
+                    @endif
                 </div>
             </div>
         </div>
@@ -95,11 +100,11 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="name-and-handle">
-                    <h3 class="name">{{Auth::user()->name}}</h3>
-                    <span class="handle">@ {{Auth::user()->name}}</span>
+                    <h3 class="name">{{$user->name}}</h3>
+                    <span class="handle">@ {{$user->name}}</span>
                 </div>
                 <p class="bio">
-                    <span>{{Auth::user()->bio}}</span>
+                    <span>{{$user->bio}}</span>
                 </p>
                 <div class="icons">
                     <div class="icon-element">
@@ -124,9 +129,9 @@
                 </div>
                 <div class="boxes">
                     <div class="group">
-                        @foreach($media as $image)
-                            <img src="{{$image->image}}" class="box">
-                        @endforeach
+{{--                        @foreach($media as $image)--}}
+{{--                            <img src="{{$image->image}}" class="box">--}}
+{{--                        @endforeach--}}
                     </div>
                 </div>
             </div>
