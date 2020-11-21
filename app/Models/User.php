@@ -69,7 +69,11 @@ class User extends Authenticatable
         return $this->hasMany("App\Comment");
     }
 
-    public function following(){
+    public function following(){  // to get number of followers
         return $this->hasMany(Follow::class, "follower_id");
+    }
+
+    public function followers(){ // to get number of following
+        return $this->hasMany(Follow::class, "following_id");
     }
 }

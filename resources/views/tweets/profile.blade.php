@@ -70,15 +70,15 @@
                 <div class="numbers">
                     <div class="btn custom-btn active-number">
                         <div class="placeholder">Tweets</div>
-                        <div class="number">{{Auth::user()->tweets->count()}}</div>
+                        <div class="number">{{$user->tweets->count()}}</div>
                     </div>
                     <div class="btn custom-btn">
                         <div class="placeholder">Followers</div>
-{{--                        <div class="number">{{Auth::user()->followers->count()}}</div>--}}
+                        <div class="number">{{$user->followers->count()}}</div>
                     </div>
                     <div class="btn custom-btn">
                         <div class="placeholder">Following</div>
-                        <div class="number">13.4K</div>
+                        <div class="number">{{$user->following->count()}}</div>
                     </div>
                 </div>
             </div>
@@ -137,13 +137,15 @@
             </div>
             <div class="col-lg-5">
                 <div class="body">
-                    <div class="add-tweet">
-                        <form action="/insert/tweet" method="post">
-                            @csrf
-                            <textarea  class="form-control" name="tweet_body" id="" cols="30" rows="10"></textarea>
-                            <button type="submit" class="btn">add tweet</button>
-                        </form>
-                    </div>
+                    @if(Auth::id() == $user->id)
+                        <div class="add-tweet">
+                            <form action="/insert/tweet" method="post">
+                                @csrf
+                                <textarea  class="form-control" name="tweet_body" id="" cols="30" rows="10"></textarea>
+                                <button type="submit" class="btn">add tweet</button>
+                            </form>
+                        </div>
+                    @endif
 
                     @foreach($tweets as $tweet)
                     <div class="tweet-card">

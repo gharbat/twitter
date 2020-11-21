@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Follow;
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +20,8 @@ FollowController extends Controller
         $action->following_id=$following;
         $action->save();
 
+        $this->notify($id, $follower, "New follower");
+
         return redirect('/profile/'.$id);
     }
 
@@ -30,4 +33,20 @@ FollowController extends Controller
         return redirect('/profile/'.$id);
 
     }
+
+    public function notify($user_id, $trigger_id, $text){
+
+        $this->notifyByApp($user_id, $trigger_id, $text);
+
+    }
+
+    public function notifyByApp($user_id, $trigger_id, $text){
+        $notification = new Notification();
+        $notification->user_id = $user_id;
+        $notification->trigger_id = $trigger_id;
+        $notification->text = $text;
+        $notification->save();
+
+    }
+
 }

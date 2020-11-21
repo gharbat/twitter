@@ -14,12 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(["middleware"=> \App\Http\Middleware\Authenticate::class], function (){
-    Route::get('/profile/{id}', [\App\Http\Controllers\TweetController::class, "index"]);
-
-    Route::post("/insert/tweet", [\App\Http\Controllers\TweetController::class, "insert"]);
-
     Route::get("/", [\App\Http\Controllers\HomeController::class, "home"]);
-
+    Route::get('/profile/{id}', [\App\Http\Controllers\TweetController::class, "index"]);
+    Route::post("/insert/tweet", [\App\Http\Controllers\TweetController::class, "insert"]);
     Route::get("/follow/{id}", [\App\Http\Controllers\FollowController::class, "follow"]);
     Route::get("/unfollow/{id}", [\App\Http\Controllers\FollowController::class, "unfollow"]);
 });
