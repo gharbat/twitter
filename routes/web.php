@@ -19,6 +19,7 @@ Route::group(["middleware"=> \App\Http\Middleware\Authenticate::class], function
     Route::post("/insert/tweet", [\App\Http\Controllers\TweetController::class, "insert"]);
     Route::get("/follow/{id}", [\App\Http\Controllers\FollowController::class, "follow"]);
     Route::get("/unfollow/{id}", [\App\Http\Controllers\FollowController::class, "unfollow"]);
+    Route::get("/notifications", [\App\Http\Controllers\NotificationController::class, "index"]);
 });
 
 

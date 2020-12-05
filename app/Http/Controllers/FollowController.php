@@ -13,6 +13,8 @@ FollowController extends Controller
     public function follow($id)
     {
         $follower = Auth::id();
+        $follower_name = Auth::user()->name;
+
         $following = User::findOrFail($id)->id;
 
         $action = new Follow();
@@ -20,7 +22,7 @@ FollowController extends Controller
         $action->following_id=$following;
         $action->save();
 
-        $this->notify($id, $follower, "New follower");
+        $this->notify($id, $follower, "$follower_name has followed you");
 
         return redirect('/profile/'.$id);
     }
