@@ -11,7 +11,6 @@ class TweetController extends Controller
     public function index($id){
 
         $user = User::findOrFail($id);
-
         $tweets = $user->tweets; // all of user tweets
 
         return view("tweets.profile", compact('tweets', 'user'));

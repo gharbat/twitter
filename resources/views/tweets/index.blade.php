@@ -95,34 +95,41 @@
                         </form>
                     </div>
 
-                    @foreach($tweets as $tweet)
-                    <div class="tweet-card">
-                        <div class="poster-image">
-                            <img src="https://via.placeholder.com/150" alt="">
-                        </div>
-                        <div class="tweet-body">
-
-                                <div class="name-more">
-                                    <div class="name">
-                                        {{$tweet->user->name}}
-                                    </div>
-                                    <div class="more">
-                                        >
-                                    </div>
+                    @foreach($ids as $id)
+                        @php
+                        $tweets = \App\Models\Tweet::where("user_id", $id)->get()
+                        @endphp
+                        @foreach($tweets as $tweet)
+                            <div class="tweet-card">
+                                <div class="poster-image">
+                                    <img src="https://via.placeholder.com/150" alt="">
                                 </div>
-                                <div class="tweet-text">
-                                    <div>
-                                        {{$tweet->body}}
+                                <div class="tweet-body">
+
+                                    <div class="name-more">
+                                        <div class="name">
+                                            <a href="/profile/{{$tweet->user->id}}">
+                                                {{$tweet->user->name}}
+                                            </a>
+                                        </div>
+                                        <div class="more">
+
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="tweet-text">
+                                        <div>
+                                            {{$tweet->body}}
+                                        </div>
+                                    </div>
 
-                                @if($tweet->image)
-                                <div class="tweet-media">
+                                    @if($tweet->image)
+                                        <div class="tweet-media">
 
+                                        </div>
+                                    @endif
                                 </div>
-                                @endif
-                        </div>
-                    </div>
+                            </div>
+                        @endforeach
                     @endforeach
 
 

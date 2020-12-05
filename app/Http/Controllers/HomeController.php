@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Tweet;
 use Illuminate\Http\Request;
-
+use Auth;
 class HomeController extends Controller
 {
     public function home(){
 
-        $prepared = Tweet::all(); // all of user tweets
+        $i_am_following_objects = Auth::user()->following;
+        $ids = [];
 
-        $tweets = $prepared; //
+        foreach ($i_am_following_objects as $user){
+            array_push($ids, $user->following_id);
+        }
 
-        return view("tweets.index", compact('tweets'));
+        return view("tweets.index", compact('ids'));
     }
 }
