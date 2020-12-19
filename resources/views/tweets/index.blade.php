@@ -95,11 +95,8 @@
                         </form>
                     </div>
 
-                    @foreach($ids as $id)
-                        @php
-                        $tweets = \App\Models\Tweet::where("user_id", $id)->get()
-                        @endphp
                         @foreach($tweets as $tweet)
+                            @php $tweet= $tweet->original @endphp
                             <div class="tweet-card">
                                 <div class="poster-image">
                                     <img src="https://via.placeholder.com/150" alt="">
@@ -130,9 +127,6 @@
                                 </div>
                             </div>
                         @endforeach
-                    @endforeach
-
-
                 </div>
             </div>
             <div class="col-lg-4"></div>
